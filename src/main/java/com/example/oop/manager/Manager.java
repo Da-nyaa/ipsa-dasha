@@ -17,6 +17,7 @@ public class Manager{
 
     private static Manager instance;
 
+
     public static synchronized Manager getInstance(){
         if(instance == null){
             instance = new Manager();
@@ -69,5 +70,9 @@ public class Manager{
             Manager.getInstance().processCommand("lose");
             Manager.getInstance().closeWindow(scene);
         }
+    }
+
+    public int getRandomNumber(int init, int end){
+        return init + (int) (Math.random() * (end - init + 1));
     }
 }

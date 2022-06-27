@@ -7,12 +7,12 @@ import com.example.oop.model.Student;
 public class PlayDota implements Command {
     @Override
     public void execute() {
+        Manager manager = Manager.getInstance();
         Student student = Student.getInstance();
-        student.setPoints(student.getPoints() - 5);
-        student.setMoralEndurance(student.getMoralEndurance() + 20);
-        student.setCash(student.getCash() - 10);
-        Manager.getInstance().saveData(student);
+        student.setPoints(student.getPoints() - manager.getRandomNumber(2, 7));
+        student.setMoralEndurance(student.getMoralEndurance() + manager.getRandomNumber(15, 25));
+        student.setCash(student.getCash() - manager.getRandomNumber(10, 15));
+        manager.saveData(student);
         System.out.println(Student.getInstance().toString());
-        System.out.println("RGR Done");
     }
 }

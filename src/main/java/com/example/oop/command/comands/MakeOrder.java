@@ -7,12 +7,13 @@ import com.example.oop.model.Student;
 public class MakeOrder implements Command {
     @Override
     public void execute() {
+        Manager manager = Manager.getInstance();
         Student student = Student.getInstance();
-        student.setCash(student.getCash() + 10);
-        student.setPoints(student.getPoints() - 5);
-        student.setMoralEndurance(student.getMoralEndurance() + 15);
-        Manager.getInstance().saveData(student);
+        student.setCash(student.getCash() + manager.getRandomNumber(7, 12));
+        student.setPoints(student.getPoints() - manager.getRandomNumber(1, 8));
+        student.setMoralEndurance(student.getMoralEndurance() + manager.getRandomNumber(11, 18));
+        manager.saveData(student);
         System.out.println(Student.getInstance().toString());
-        System.out.println("Order makead");
+        System.out.println("Make order");
     }
 }

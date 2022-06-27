@@ -7,10 +7,11 @@ import com.example.oop.model.Student;
 public class EatShawarma implements Command {
     @Override
     public void execute() {
+        Manager manager = Manager.getInstance();
         Student student = Student.getInstance();
-        student.setPoints(student.getPoints() + 0);
-        student.setMoralEndurance(student.getMoralEndurance() + 10);
-        student.setCash(student.getCash() - 10);
+
+        student.setMoralEndurance(student.getMoralEndurance() + manager.getRandomNumber(5, 15));
+        student.setCash(student.getCash() - manager.getRandomNumber(5, 15));
         Manager.getInstance().saveData(student);
         System.out.println(Student.getInstance().toString());
         System.out.println("Eat Shawarma");
